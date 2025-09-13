@@ -31,4 +31,23 @@ public class ContatoController {
        return "redirect:/";
     }
     
+    @GetMapping("/editar")
+    public String editar (@RequestParam int index, Model model ) {
+       if (index >=0 && index < contatos.size()) {
+        Contato contatoParaEditar = contatos.get(index);
+        model.addAttribute("contato", contatoParaEditar);
+        model.addAttribute("index", index);
+        return "editar";
+       }
+       return "redirect:/";
+    }
+
+    @GetMapping("/remover")
+    public String remover(@RequestParam int index) {
+       if (index >= 0 && index< contatos.size()) {
+        contatos.remove(index);
+       }
+        return "redirect:/";
+    }
+    
 }
