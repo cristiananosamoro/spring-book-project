@@ -49,5 +49,17 @@ public class ContatoController {
        }
         return "redirect:/";
     }
+
+    @PostMapping("/salvarEdicao")
+    public String salvarEdicao(@RequestParam int index, @RequestParam String nome, @RequestParam String telefone) {
+        if(index >= 0 && index < contatos.size()){
+            Contato contatoParaEditar = contatos.get (index);
+
+        contatoParaEditar.setNome(nome);
+        contatoParaEditar.setTelefone(telefone);
+        }
+        return "redirect:/";
+    }
+    
     
 }
